@@ -93,7 +93,7 @@ public class ZookeeperClientFactory {
             ep.pollForInitialEnsemble();
         }
         catch (Exception e) {
-            log.error(e.getStackTrace().toString());
+            log.error(e.getMessage());
         }
 
         // create curator client
