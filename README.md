@@ -24,5 +24,5 @@ Meld is inspired by [cfregly's](https://github.com/cfregly) [fluxcapacitor](http
 
 My goal is to enable the use of an Autoscaling Zookeeper Cluster which can have individual nodes terminated while continuing to function and self heal. This goal has been met however at this stage it may be somewhat academic as this solution relies upon Zookeeper being accessed via Curator which may not be the case when other applications connect to the Zookeeper cluster.
 
-[Wiki](/syfen/meld/wiki) starts [here](/syfen/meld/wiki).
+[Wiki](https://github.com/syfen/meld/wiki) starts [here](https://github.com/syfen/meld/wiki).
 
