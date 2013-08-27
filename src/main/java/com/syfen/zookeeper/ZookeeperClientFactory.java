@@ -46,7 +46,8 @@ public class ZookeeperClientFactory {
     /**
      * Initialize an Archaius Zookeeper Configuration from astarted ZK client
      */
-    public static void initializeAndStartZkConfigSource(Collection<String> exhibitorList, String namespace, String zkConfigRootPath) throws Exception {
+    public static void initializeAndStartZkConfigSource(Collection<String> exhibitorList, String namespace,
+                                                        String zkConfigRootPath) throws Exception {
 
         // ZooKeeper Dynamic Override Properties
         CuratorFramework client = ZookeeperClientFactory.getStartedZKClient(exhibitorList, namespace);
@@ -72,7 +73,8 @@ public class ZookeeperClientFactory {
     /**
      * Create and start a zkclient if needed
      */
-    private synchronized static CuratorFramework createAndStartZKClient(Collection<String> exhibitorList, String namespace) {
+    private synchronized static CuratorFramework createAndStartZKClient(Collection<String> exhibitorList,
+                                                                        String namespace) {
 
         ZookeeperClientCacheItem cachedItem = cache.getIfPresent(exhibitorList.toString());
         if (cachedItem != null) {
