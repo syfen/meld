@@ -16,7 +16,7 @@ Meld is a very small library which strives to bring together the following compo
     - S3 (for shared exhibitor configuration)
 
 If all of these things are part of your stack then Syfen Meld will probably interest you. If not, you may be better off working with something else.
-Meld is inspired in part by [cfregly's](https://github.com/cfregly) [https://github.com/cfregly] [fluxcapacitor](https://github.com/cfregly/fluxcapacitor) project. Specifically his [ZooKeeperClientFactory](https://github.com/cfregly/fluxcapacitor/blob/master/flux-core/src/main/java/com/fluxcapacitor/core/zookeeper/ZooKeeperClientFactory.java) class which I have adapted to:
+Meld is inspired in part by [cfregly's](https://github.com/cfregly) [fluxcapacitor](https://github.com/cfregly/fluxcapacitor) project. Specifically his [ZooKeeperClientFactory](https://github.com/cfregly/fluxcapacitor/blob/master/flux-core/src/main/java/com/fluxcapacitor/core/zookeeper/ZooKeeperClientFactory.java) class which I have adapted to:
 
 - be a little more generic allowing multiple Zookeeper namespaces and root paths to be used by a single application
 - be integrated with Exhibitor by using the ExhibitorEnsembleProvider
