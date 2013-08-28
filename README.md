@@ -5,7 +5,7 @@ Java Zookeeper library designed to support auto scaling Zookeeper clusters.
 
 ## What is meld about?
 
-meld is a very small library which strives to bring together the following components:
+Meld is a very small library which strives to bring together the following components:
 
 - Zookeeper
 - Exhibitor
