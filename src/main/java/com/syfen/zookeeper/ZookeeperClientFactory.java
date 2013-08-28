@@ -44,7 +44,7 @@ public class ZookeeperClientFactory {
     }
 
     /**
-     * Initialize an Archaius Zookeeper Configuration from astarted ZK client
+     * Initialize an Archaius Zookeeper Configuration from a started ZK client
      */
     public static void initializeAndStartZkConfigSource(Collection<String> exhibitorList, String namespace,
                                                         String zkConfigRootPath) throws Exception {
