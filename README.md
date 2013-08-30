@@ -20,7 +20,7 @@ Meld is inspired by [cfregly's](https://github.com/cfregly) [fluxcapacitor](http
 
 - be a little more generic allowing multiple Zookeeper namespaces and root paths to be used by a single application
 - be integrated with Exhibitor by using the ExhibitorEnsembleProvider
-- leverage the Exhibitor shared configuration file to support the initialization of the Exhibitor Ensemble Provider and the Backup Connection String Provider
+- leverage the Exhibitor shared configuration file (stored in S3) to support the initialization of the Exhibitor Ensemble Provider and the Backup Connection String Provider
 
 My goal is to enable the use of an Autoscaling Zookeeper Cluster which can have individual nodes terminated while continuing to function and self heal. This goal has been met however at this stage it may be somewhat academic as this solution relies upon Zookeeper being accessed via Curator which may not be the case when other applications connect to the Zookeeper cluster.
 
