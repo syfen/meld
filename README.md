@@ -1,7 +1,7 @@
 syfen / meld
 ====
 
-Java Zookeeper library designed to support auto scaling Zookeeper clusters.
+Java Archaius Zookeeper Configuration implementation designed to support auto scaling Zookeeper clusters.
 
 ## What is meld about?
 
