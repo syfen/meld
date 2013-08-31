@@ -45,4 +45,27 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <jdk.version>1.6</jdk.version>
+    </properties>
+
+    <build>
+        <defaultGoal>compile</defaultGoal>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                        <fork>true</fork>
+                        <meminitial>512m</meminitial>
+                        <maxmem>512m</maxmem>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
 </project>
