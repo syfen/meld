@@ -14,8 +14,6 @@ public class Constants {
     public static final String ZK_CONFIG_CLIENT_PORT = "zookeeper.config.client.port";
     public static final String ZK_CONFIG_EXHIBITOR_S3BUCKET = "zookeeper.config.exhibitor.config.s3bucket";
     public static final String ZK_CONFIG_EXHIBITOR_S3KEY = "zookeeper.config.exhibitor.config.s3key";
-
-    // aws
-    public static final String AWS_ACCESS_KEY = "aws.access_key";
-    public static final String AWS_SECRET_KEY = "aws.secret_key";
+    public static final String ZK_CONFIG_EXHIBITOR_AWS_ACCESS_KEY = "zookeeper.config.exhibitor.config.access_key";
+    public static final String ZK_CONFIG_EXHIBITOR_AWS_SECRET_KEY = "zookeeper.config.exhibitor.config.secret_key";
 }

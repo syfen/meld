@@ -26,8 +26,8 @@ public class ZookeeperBackupConnectionStringProvider implements Exhibitors.Backu
         S3PropertiesFile props = new S3PropertiesFile(
                 config.getString(Constants.ZK_CONFIG_EXHIBITOR_S3BUCKET),
                 config.getString(Constants.ZK_CONFIG_EXHIBITOR_S3KEY),
-                config.getString(Constants.AWS_ACCESS_KEY),
-                config.getString(Constants.AWS_SECRET_KEY));
+                config.getString(Constants.ZK_CONFIG_EXHIBITOR_AWS_ACCESS_KEY),
+                config.getString(Constants.ZK_CONFIG_EXHIBITOR_AWS_SECRET_KEY));
 
         return PropertyParser.connectionString(
                 props.get(Constants.ZK_CONFIG_EXHIBITOR_SERVER_SPEC),
