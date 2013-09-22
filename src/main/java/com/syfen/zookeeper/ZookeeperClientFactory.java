@@ -38,7 +38,7 @@ public class ZookeeperClientFactory {
         String cacheKey = namespace + "-" + exhibitorList.toString();
         ZookeeperClientCacheItem cachedItem = cache.getIfPresent(cacheKey);
         if (cachedItem != null) {
-            return cachedItem.client;
+            return cachedItem.getClient();
         }
         return createAndStartZKClient(exhibitorList, namespace);
     }
@@ -78,7 +78,7 @@ public class ZookeeperClientFactory {
 
         ZookeeperClientCacheItem cachedItem = cache.getIfPresent(exhibitorList.toString());
         if (cachedItem != null) {
-            return cachedItem.client;
+            return cachedItem.getClient();
         }
 
         String zkConfigExhibitorPathClusterList = config.getString(Constants.ZK_CONFIG_EXHIBITOR_PATH_CLUSTER_LIST);
