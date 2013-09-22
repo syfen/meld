@@ -3,6 +3,7 @@ package com.syfen.zookeeper.util;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.S3Object;
+import com.syfen.zookeeper.exceptions.PropertyNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,13 +40,13 @@ public class S3PropertiesFile {
         }
     }
 
-    public String get(String propName) {
+    public String get(String propName) throws PropertyNotFoundException {
 
         if(!propName.isEmpty() && props.containsKey(propName)) {
             return props.getProperty(propName);
         }
         else {
-            return null;
+            throw new PropertyNotFoundException(propName);
         }
     }
 }
