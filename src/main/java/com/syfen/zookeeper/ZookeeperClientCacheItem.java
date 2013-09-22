@@ -8,12 +8,20 @@ import com.netflix.curator.framework.CuratorFramework;
  */
 public class ZookeeperClientCacheItem {
 
-    public final String ensembleLabel;
-    public final CuratorFramework client;
+    private final String ensembleLabel;
+    private final CuratorFramework client;
 
-    public ZookeeperClientCacheItem(String ensembleLabel, CuratorFramework client) {
+    public ZookeeperClientCacheItem(String ensemble, CuratorFramework zkClient) {
 
-        this.ensembleLabel = ensembleLabel;
-        this.client = client;
+        ensembleLabel = ensemble;
+        client = zkClient;
+    }
+
+    public String getEnsembleLabel() {
+        return ensembleLabel;
+    }
+
+    public CuratorFramework getClient() {
+        return client;
     }
 }
