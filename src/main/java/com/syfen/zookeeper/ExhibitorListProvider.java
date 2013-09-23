@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * User: ToneD
@@ -19,9 +20,9 @@ public class ExhibitorListProvider {
     private static final Logger log = LoggerFactory.getLogger(ExhibitorListProvider.class);
     private static final AbstractConfiguration config = ConfigurationManager.getConfigInstance();
 
-    public static ArrayList<String> getExhibitorList() {
+    public static Collection<String> getExhibitorList() {
 
-        ArrayList<String> list = new ArrayList<String>();
+        Collection<String> list = new ArrayList<String>();
 
         // get exhibitor shared properties file
         S3PropertiesFile props = new S3PropertiesFile(

@@ -22,7 +22,7 @@ public class ExhibitorListProviderTest {
     private static final Logger log = LoggerFactory.getLogger(ExhibitorListProvider.class);
     private static final AbstractConfiguration config = ConfigurationManager.getConfigInstance();
 
-    private static ArrayList<String> exhibitorList;
+    private static Collection<String> exhibitorList;
     private static ArrayList<String> expectedList;
 
     @BeforeClass
