@@ -48,30 +48,23 @@
             <artifactId>archaius-zookeeper</artifactId>
             <version>0.5.11</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.2</version>
+        </dependency>
     </dependencies>
-
-    <properties>
-        <jdk.version>1.6</jdk.version>
-        <compiler.plugin.version>2.3.2</compiler.plugin.version>
-    </properties>
-
     <build>
-        <defaultGoal>compile</defaultGoal>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${compiler.plugin.version}</version>
-                    <configuration>
-                        <source>${jdk.version}</source>
-                        <target>${jdk.version}</target>
-                        <fork>true</fork>
-                        <meminitial>512m</meminitial>
-                        <maxmem>512m</maxmem>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-
 </project>

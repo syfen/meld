@@ -13,6 +13,7 @@ import com.netflix.curator.framework.CuratorFramework;
 import com.netflix.curator.framework.CuratorFrameworkFactory;
 import com.netflix.curator.framework.imps.CuratorFrameworkState;
 import com.netflix.curator.retry.ExponentialBackoffRetry;
+import com.syfen.zookeeper.exhibitor.ExhibitorListProvider;
 import org.apache.commons.configuration.AbstractConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,27 +34,33 @@ public class ZookeeperClientFactory {
     /**
      * Get a started ZK client
      */
-    public static CuratorFramework getStartedZKClient(Collection<String> exhibitorList, String namespace) {
+    public static CuratorFramework getStartedZKClient(ExhibitorListProvider exhibitorListProvider, String namespace) {
 
-        String cacheKey = namespace + "-" + exhibitorList.toString();
+        String cacheKey = namespace + "-" + exhibitorListProvider.getExhibitorList().toString();
         ZookeeperClientCacheItem cachedItem = cache.getIfPresent(cacheKey);
         if (cachedItem != null) {
             return cachedItem.getClient();
         }
-        return createAndStartZKClient(exhibitorList, namespace);
+        return createAndStartZKClient(exhibitorListProvider, namespace);
+    }
+
+    public static Cache<String, ZookeeperClientCacheItem> getClients() {
+
+        return cache;
     }
 
     /**
      * Initialize an Archaius Zookeeper Configuration from a started ZK client
      */
-    public static void initializeAndStartZkConfigSource(Collection<String> exhibitorList, String namespace,
+    public static void initializeAndStartZkConfigSource(ExhibitorListProvider exhibitorListProvider, String namespace,
                                                         String zkConfigRootPath) throws Exception {
 
         // ZooKeeper Dynamic Override Properties
-        CuratorFramework client = ZookeeperClientFactory.getStartedZKClient(exhibitorList, namespace);
+        CuratorFramework client = ZookeeperClientFactory.getStartedZKClient(exhibitorListProvider, namespace);
 
         if (client.getState() != CuratorFrameworkState.STARTED) {
-            throw new RuntimeException("ZooKeeper located at " + exhibitorList.toString() + " is not started.");
+            throw new RuntimeException("ZooKeeper located at " + exhibitorListProvider.getExhibitorList().toString()
+                    + " is not started.");
         }
 
         // Create Zookeeper configuration source
@@ -73,10 +80,10 @@ public class ZookeeperClientFactory {
     /**
      * Create and start a zkclient if needed
      */
-    private synchronized static CuratorFramework createAndStartZKClient(Collection<String> exhibitorList,
+    private synchronized static CuratorFramework createAndStartZKClient(ExhibitorListProvider exhibitorListProvider,
                                                                         String namespace) {
 
-        ZookeeperClientCacheItem cachedItem = cache.getIfPresent(exhibitorList.toString());
+        ZookeeperClientCacheItem cachedItem = cache.getIfPresent(exhibitorListProvider.getExhibitorList().toString());
         if (cachedItem != null) {
             return cachedItem.getClient();
         }
@@ -86,11 +93,13 @@ public class ZookeeperClientFactory {
         Integer zkConfigExhibitorPollInterval = config.getInt(Constants.ZK_CONFIG_EXHIBITOR_POLL_INTERVAL);
 
         // create ensemble provider
-        Exhibitors exhibitors = new Exhibitors(exhibitorList, zkConfigExhibitorPort,
+        Exhibitors exhibitors = new Exhibitors(exhibitorListProvider.getExhibitorList(), zkConfigExhibitorPort,
                 new ZookeeperBackupConnectionStringProvider());
+
         ExponentialBackoffRetry rp = new ExponentialBackoffRetry(1000, 3);
         ExhibitorEnsembleProvider ep = new ExhibitorEnsembleProvider(exhibitors, new DefaultExhibitorRestClient(),
                 zkConfigExhibitorPathClusterList, zkConfigExhibitorPollInterval, rp);
+
         try {
             ep.pollForInitialEnsemble();
         }
@@ -103,10 +112,12 @@ public class ZookeeperClientFactory {
                 .retryPolicy(rp).build();
         client.start();
 
-        String cacheKey = namespace + "-" + exhibitorList.toString();
-        cache.put(cacheKey, new ZookeeperClientCacheItem(cacheKey, client));
+        String cacheKey = namespace + "-" + exhibitorListProvider.getExhibitorList().toString();
+        cache.put(cacheKey, new ZookeeperClientCacheItem(cacheKey, client,
+                exhibitorListProvider));
 
-        log.info("Created, started, and cached zk client [{}] for ensemble [{}]", client, exhibitorList.toString());
+        log.info("Created, started, and cached zk client [{}] for ensemble [{}]", client,
+                exhibitorListProvider.getExhibitorList().toString());
 
         return client;
     }

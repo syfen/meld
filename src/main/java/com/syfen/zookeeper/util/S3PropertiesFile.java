@@ -17,15 +17,13 @@ import java.util.Properties;
 public class S3PropertiesFile {
 
     private static Logger log = LoggerFactory.getLogger(S3PropertiesFile.class);
-    private AmazonS3Client s3Client;
-    private BasicAWSCredentials basicAWSCredentials;
     private Properties props;
 
     public S3PropertiesFile(String bucket, String key, String awsAccessKey, String awsSecretKey) {
 
         // setup S3 client
-        basicAWSCredentials = new BasicAWSCredentials(awsAccessKey, awsSecretKey);
-        s3Client = new AmazonS3Client(basicAWSCredentials);
+        BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials(awsAccessKey, awsSecretKey);
+        AmazonS3Client s3Client = new AmazonS3Client(basicAWSCredentials);
 
         // get file
         S3Object object = s3Client.getObject(bucket, key);

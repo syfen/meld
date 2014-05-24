@@ -1,7 +1,6 @@
 package com.syfen.zookeeper.util;
 
 import com.netflix.config.ConfigurationManager;
-import com.syfen.zookeeper.ExhibitorListProvider;
 import junit.framework.Assert;
 import org.apache.commons.configuration.AbstractConfiguration;
 import org.apache.commons.lang.StringUtils;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
  */
 public class PropertyParserTest {
 
-    private static final Logger log = LoggerFactory.getLogger(ExhibitorListProvider.class);
+    private static final Logger log = LoggerFactory.getLogger(PropertyParserTest.class);
     private static final AbstractConfiguration config = ConfigurationManager.getConfigInstance();
 
     private static String serversSpec;
