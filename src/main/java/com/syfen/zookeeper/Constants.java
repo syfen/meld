@@ -7,9 +7,11 @@ package com.syfen.zookeeper;
 public class Constants {
 
     // zookeeper
-    public static final String ZK_CONFIG_EXHIBITOR_HTTP_SCHEME = "zookeeper.config.exhibitor.http_scheme";
-    public static final String ZK_CONFIG_EXHIBITOR_HOST = "zookeeper.config.exhibitor.host";
-    public static final String ZK_CONFIG_EXHIBITOR_PORT = "zookeeper.config.exhibitor.port";
+    public static final String ZK_CONFIG_EXHIBITOR_HOST_LB = "zookeeper.config.exhibitor.host_lb";
+    public static final String ZK_CONFIG_EXHIBITOR_SSL_NODE = "zookeeper.config.exhibitor.ssl_node";
+    public static final String ZK_CONFIG_EXHIBITOR_SSL_LB = "zookeeper.config.exhibitor.ssl_lb";
+    public static final String ZK_CONFIG_EXHIBITOR_PORT_NODE = "zookeeper.config.exhibitor.port_node";
+    public static final String ZK_CONFIG_EXHIBITOR_PORT_LB = "zookeeper.config.exhibitor.port_lb";
     public static final String ZK_CONFIG_EXHIBITOR_POLL_INTERVAL = "zookeeper.config.exhibitor.poll.interval";
     public static final String ZK_CONFIG_EXHIBITOR_PATH_CLUSTER_LIST = "zookeeper.config.exhibitor.path.cluster_list";
     public static final String ZK_CONFIG_EXHIBITOR_SERVER_SPEC = "com.netflix.exhibitor.servers-spec";

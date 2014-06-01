@@ -89,7 +89,7 @@ public class ZookeeperClientFactory {
         }
 
         String zkConfigExhibitorPathClusterList = config.getString(Constants.ZK_CONFIG_EXHIBITOR_PATH_CLUSTER_LIST);
-        Integer zkConfigExhibitorPort = config.getInt(Constants.ZK_CONFIG_EXHIBITOR_PORT);
+        Integer zkConfigExhibitorPort = config.getInt(Constants.ZK_CONFIG_EXHIBITOR_PORT_NODE);
         Integer zkConfigExhibitorPollInterval = config.getInt(Constants.ZK_CONFIG_EXHIBITOR_POLL_INTERVAL);
 
         // create ensemble provider
@@ -97,7 +97,8 @@ public class ZookeeperClientFactory {
                 new ZookeeperBackupConnectionStringProvider());
 
         ExponentialBackoffRetry rp = new ExponentialBackoffRetry(1000, 3);
-        ExhibitorEnsembleProvider ep = new ExhibitorEnsembleProvider(exhibitors, new DefaultExhibitorRestClient(),
+        ExhibitorEnsembleProvider ep = new ExhibitorEnsembleProvider(exhibitors,
+                new DefaultExhibitorRestClient(config.getBoolean(Constants.ZK_CONFIG_EXHIBITOR_SSL_NODE, false)),
                 zkConfigExhibitorPathClusterList, zkConfigExhibitorPollInterval, rp);
 
         try {

@@ -32,16 +32,17 @@ public class ExhibitorLBListProvider implements ExhibitorListProvider {
 
         try {
             //build exhibitor uri
-            StringBuilder uri = new StringBuilder()
-                    .append(config.getString(Constants.ZK_CONFIG_EXHIBITOR_HTTP_SCHEME))
+            String uri = new StringBuilder()
+                    .append(config.getBoolean(Constants.ZK_CONFIG_EXHIBITOR_SSL_LB, false) ? "https" : "http")
                     .append("://")
-                    .append(config.getString(Constants.ZK_CONFIG_EXHIBITOR_HOST))
+                    .append(config.getString(Constants.ZK_CONFIG_EXHIBITOR_HOST_LB))
                     .append(":")
-                    .append(config.getString(Constants.ZK_CONFIG_EXHIBITOR_PORT))
-                    .append(config.getString(Constants.ZK_CONFIG_EXHIBITOR_PATH_CLUSTER_LIST));
+                    .append(config.getString(Constants.ZK_CONFIG_EXHIBITOR_PORT_LB))
+                    .append(config.getString(Constants.ZK_CONFIG_EXHIBITOR_PATH_CLUSTER_LIST))
+                    .toString();
 
             // make request
-            HttpGet getReq = new HttpGet(uri.toString());
+            HttpGet getReq = new HttpGet(uri);
             HttpResponse response = client.execute(getReq);
             String responseContent = EntityUtils.toString(response.getEntity());
             EntityUtils.consumeQuietly(response.getEntity());
