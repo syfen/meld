@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
  * User: ToneD
  * Created: 26/05/2014 9:05 PM
  */
-public class ZookeeperClientFactoryTest {
+public class ZookeeperClientFactoryIT {
 
-    private static final Logger log = LoggerFactory.getLogger(ZookeeperClientFactoryTest.class);
+    private static final Logger log = LoggerFactory.getLogger(ZookeeperClientFactoryIT.class);
 
     @Test
     public void testLBListProvider() {

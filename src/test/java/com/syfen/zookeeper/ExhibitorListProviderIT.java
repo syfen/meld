@@ -18,9 +18,9 @@ import java.util.Collections;
  * User: ToneD
  * Created: 21/09/13 1:09 PM
  */
-public class ExhibitorListProviderTest {
+public class ExhibitorListProviderIT {
 
-    private static final Logger log = LoggerFactory.getLogger(ExhibitorListProviderTest.class);
+    private static final Logger log = LoggerFactory.getLogger(ExhibitorListProviderIT.class);
     private static final AbstractConfiguration config = ConfigurationManager.getConfigInstance();
 
     private static ArrayList<String> exhibitorListS3;
