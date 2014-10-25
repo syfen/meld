@@ -77,8 +77,8 @@ module.exports = function(grunt) {
                     title: '<%= pkg.name %>',
                     version: '<%= pkg.version %>',
                     navItems: [
-                        { label: 'Readme', url: '/core/<%= pkg.version %>/' },
-                        { label: 'API', url: '/core/<%= pkg.version %>/api' }
+                        { label: 'Readme', url: '/meld/<%= pkg.version %>/' },
+                        { label: 'API', url: '/meld/<%= pkg.version %>/api' }
                     ]
                 },
                 output: 'docs/source/_includes/header.html'
