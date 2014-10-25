@@ -1,0 +1,20 @@
+{
+	"name": "syfen-meld",
+	"version": "1.0.0",
+	"authors": [ "Tony Dane" ],
+	"description": "Java syfen-meld module",
+	"license": "Commercial",
+	"private": true,
+	"dependencies": {
+		"syfen-doc-js": "git@github.com:syfen/doc-js.git#>=1.0.0",
+		"github-markdown-css": ">=0.2.0"
+	},
+	"ignore": [
+		"**/.*",
+		"test",
+		"package.json",
+		"bower.json",
+		"Gruntfile.js",
+		"README.md"
+	]
+}

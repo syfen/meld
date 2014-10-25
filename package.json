@@ -1,0 +1,19 @@
+{
+  "name": "syfen-meld",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Java syfen-meld module",
+  "homepage": "http://docs.syfen.net/java-core",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/syfen/meld.git"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-compile-handlebars": "0.7.8",
+    "grunt-markdown": "~0.6.1",
+    "grunt-jekyll": "~0.4.1"
+  }
+}
