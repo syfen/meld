@@ -86,3 +86,6 @@ bower_components/syfen-doc-js/toc/index.html
 bower_components/syfen-doc-js/yuitheme/helpers.js
 bower_components/syfen-doc-js/yuitheme/layouts/main.handlebars
 bower_components/syfen-doc-js/yuitheme/partials/index.handlebars
+BUILD.id
+docs
+node_modules
