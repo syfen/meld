@@ -9,7 +9,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Syfen Meld</name>
+    <name>syfen-meld</name>
     <description>Archaius Zookeeper Configuration Library</description>
     <url>https://github.com/syfen/meld</url>
 
